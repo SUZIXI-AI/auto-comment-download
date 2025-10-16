@@ -1,6 +1,6 @@
 {
   "version": "1.5.0",
-  "download_url": "https://github.com/SUZIXI-AI/auto-comment-download/releases/download/v1.5.0/智能评论助手.exe",
+  "download_url": "https://github.com/SUZIXI-AI/auto-comment-download/releases/download/v1.5.0/default.exe",
   "release_date": "2025-10-16",
   "release_notes": "- 优化评论速度，发送后等待时间从300ms减少到150ms\n- 优化滚动等待时间，从300ms减少到150ms\n- 整体评论速度提升约13%",
   "min_version": "1.0.0",
