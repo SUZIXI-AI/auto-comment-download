@@ -13,138 +13,233 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #0a0a0a;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 背景动画 */
+        body::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 20% 50%, rgba(45, 45, 45, 0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 50%, rgba(60, 60, 60, 0.2) 0%, transparent 50%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         .container {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            max-width: 800px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8),
+                        0 0 100px rgba(255, 255, 255, 0.05) inset;
+            max-width: 900px;
             width: 100%;
-            padding: 40px;
+            padding: 50px;
+            position: relative;
+            z-index: 1;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
 
         .header h1 {
-            font-size: 32px;
-            color: #333;
-            margin-bottom: 10px;
+            font-size: 42px;
+            background: linear-gradient(135deg, #ffffff 0%, #a0a0a0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            font-weight: 700;
+            letter-spacing: -1px;
         }
 
         .header p {
-            color: #666;
-            font-size: 16px;
+            color: #888;
+            font-size: 18px;
+            letter-spacing: 0.5px;
         }
 
         .version-card {
-            background: #f8f9fa;
-            border-radius: 12px;
-            padding: 30px;
-            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
         }
 
         .version-tag {
             display: inline-block;
-            background: #667eea;
-            color: white;
-            padding: 6px 16px;
-            border-radius: 20px;
+            background: linear-gradient(135deg, #3a3a3a 0%, #505050 100%);
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 25px;
             font-size: 14px;
-            font-weight: bold;
-            margin-bottom: 15px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            letter-spacing: 0.5px;
         }
 
         .version-info {
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
 
         .version-info h3 {
-            color: #333;
-            margin-bottom: 10px;
-            font-size: 18px;
+            color: #e0e0e0;
+            margin-bottom: 15px;
+            font-size: 20px;
+            font-weight: 600;
         }
 
         .changelog {
-            color: #555;
-            line-height: 1.8;
-            margin-left: 20px;
+            color: #b0b0b0;
+            line-height: 2;
+            margin-left: 0;
+            list-style: none;
         }
 
         .changelog li {
-            margin-bottom: 8px;
+            margin-bottom: 12px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .changelog li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #666;
+            font-size: 18px;
         }
 
         .download-btn {
             display: block;
             width: 100%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #2a2a2a 0%, #404040 100%);
             color: white;
             text-align: center;
-            padding: 16px 32px;
-            border-radius: 12px;
+            padding: 20px 40px;
+            border-radius: 14px;
             text-decoration: none;
-            font-size: 18px;
-            font-weight: bold;
-            transition: transform 0.2s, box-shadow 0.2s;
-            border: none;
+            font-size: 20px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.1);
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 1px;
+        }
+
+        .download-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .download-btn:hover::before {
+            left: 100%;
         }
 
         .download-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .download-btn:active {
+            transform: translateY(-1px);
         }
 
         .file-info {
             text-align: center;
-            margin-top: 15px;
-            color: #888;
+            margin-top: 20px;
+            color: #666;
             font-size: 14px;
+            letter-spacing: 0.5px;
         }
 
         .stats {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 20px;
-            margin-top: 30px;
+            margin-top: 40px;
         }
 
         .stat-card {
             text-align: center;
-            padding: 20px;
-            background: #f0f4ff;
-            border-radius: 10px;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
         }
 
         .stat-card .number {
-            font-size: 28px;
-            font-weight: bold;
-            color: #667eea;
-            margin-bottom: 5px;
+            font-size: 32px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff 0%, #808080 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
         }
 
         .stat-card .label {
-            color: #666;
+            color: #777;
             font-size: 14px;
+            letter-spacing: 0.5px;
         }
 
         .footer {
             text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
-            color: #999;
-            font-size: 14px;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: #555;
+            font-size: 13px;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px;
+            }
+
+            .header h1 {
+                font-size: 32px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -161,9 +256,9 @@
             <div class="version-info">
                 <h3>📦 更新内容</h3>
                 <ul class="changelog" id="changelog">
-                    <li>⚡ 优化评论速度，发送后等待时间从300ms减少到150ms</li>
-                    <li>⚡ 优化滚动等待时间，从300ms减少到150ms</li>
-                    <li>🎯 整体评论速度提升约13%</li>
+                    <li>优化评论速度，发送后等待时间从300ms减少到150ms</li>
+                    <li>优化滚动等待时间，从300ms减少到150ms</li>
+                    <li>整体评论速度提升约13%</li>
                 </ul>
             </div>
 
@@ -185,10 +280,6 @@
                 <div class="number">⭐⭐⭐⭐⭐</div>
                 <div class="label">用户评价</div>
             </div>
-            <div class="stat-card">
-                <div class="number">免费</div>
-                <div class="label">完全免费</div>
-            </div>
         </div>
 
         <div class="footer">
@@ -197,24 +288,20 @@
     </div>
 
     <script>
-        // 下载链接（已配置好你的GitHub地址）
-        let DOWNLOAD_URL = 'https://github.com/SUZIXI-AI/auto-comment-download/releases/download/v1.5.0/智能评论助手.exe';
+        // 下载链接
+        let DOWNLOAD_URL = 'https://github.com/SUZIXI-AI/auto-comment-download/releases/download/v1.5.0/default.exe';
 
         function downloadApp() {
-            // 开始下载
             window.location.href = DOWNLOAD_URL;
-
-            // 简单的下载统计
             console.log('Download started:', new Date());
         }
 
-        // 自动从 version.json 加载最新版本信息
+        // 自动加载版本信息
         async function loadVersionInfo() {
             try {
                 const response = await fetch('version.json');
                 const data = await response.json();
 
-                // 更新页面显示
                 if (data.version) {
                     document.getElementById('versionTag').textContent = `最新版本 v${data.version}`;
                     document.getElementById('currentVersion').textContent = data.version;
@@ -229,12 +316,10 @@
                 }
 
                 if (data.release_notes) {
-                    // 解析更新说明
                     const notes = data.release_notes.split('\n').filter(line => line.trim());
                     if (notes.length > 0) {
                         const changelogEl = document.getElementById('changelog');
                         changelogEl.innerHTML = notes.map(note => {
-                            // 移除开头的 "- " 如果有的话
                             const cleanNote = note.replace(/^-\s*/, '');
                             return `<li>${cleanNote}</li>`;
                         }).join('');
@@ -245,7 +330,6 @@
             }
         }
 
-        // 页面加载时自动加载版本信息
         window.addEventListener('load', loadVersionInfo);
     </script>
 </body>
